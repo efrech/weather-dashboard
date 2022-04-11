@@ -23,13 +23,8 @@ let geoApiUrl
 dayjs.extend(window.dayjs_plugin_utc);
 dayjs.extend(window.dayjs_plugin_timezone);
 
-//function to display search history
-//localStorage to store any persistent data.
-// geolocation API var weatherApiUrl = `http://api.openweathermap.org/geo/1.0/direct?q=$(city)&limit=5&appid=ab6a1a7a5118ab88f137e081056c95e1`;
-
-
 function geoData(searchInput) {
-  geoApiUrl = "http://api.openweathermap.org/geo/1.0/direct?q=" + searchInput+ "&limit=1&appid=ab6a1a7a5118ab88f137e081056c95e1"
+  geoApiUrl = "https://api.openweathermap.org/geo/1.0/direct?q=" + searchInput+ "&limit=1&appid=ab6a1a7a5118ab88f137e081056c95e1"
     fetch(geoApiUrl)
       .then(function(res) {
           return res.json()
