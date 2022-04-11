@@ -1,0 +1,47 @@
+.history-box {
+    background-color: rgb(124, 129, 133);
+    border: 1px solid;
+}
+li {
+    list-style: none;
+    padding-top: 1em;
+}
+.red {
+    background-color: #de5454;
+    color: white;
+  }
+  
+  .yellow {
+    background-color: #eaf107;
+    color: white;
+  }
+  
+  .green {
+    background-color: #77dd77;
+    color: white;
+  }
+  .fbox {
+      background-color: rgb(47, 92, 152);
+      display: flex;
+      justify-content: space-between;
+      color: aliceblue;
+      padding: 2%;
+      margin: 2%;
+  }
+  .tbox {
+      border: black solid 2px;
+      padding: 2em;
+  }
+  .saveBtn {
+    border-left: 1px solid black;
+    border-top-right-radius: 15px;
+    border-bottom-right-radius: 15px;
+    background-color: #06aed5;
+    color: white;
+  }
+  
+  .saveBtn i:hover {
+    font-size: 20px;
+    transition: all 0.3s ease-in-out;
+  }
+  

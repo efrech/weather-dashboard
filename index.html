@@ -20,23 +20,24 @@
   <div class="container-fluid" style="max-width: 1400px">
     <div class="row">
       <aside class="col-lg-3 pb-3">
-        <h3 id="form heading" class="mt-1 h3 form-label" style="font-weight: bold;">Search for city: </h3>
+        <h3 id="form heading" class="mt-1 h3 form-label" style="font-weight: bold;">Search for city: 
+        </h3>
         <form id="search-form" class="form">
           <div class="form-group mt-1">
             <input type="search" class="form-control" placeholder="San Diego" id="search-input"/>
             <button type="submit" class="btn btn-primary btn-block mt-2" id="searchBtn">search</button>
           </div>
         </form>
-        <div id="search-history">
-
-        </div>
+        <div id="search-history" class="history-box"></div>
       </aside>
-      <section class="col-lg-3">
-        <div id="today_box">
+      <section class="col-lg-9">
+        <div class="container-fluid">
+          <div class="row card" id="today_box">
+          </div>
+          <div class="row" id="title-forecast"></div>
+          <section class="row" id="forecast-box">
+          </section>
         </div>
-      </section>
-      <section id="forecast-box">
-        
       </section>
     </div>
   </div>

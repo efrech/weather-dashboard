@@ -13,6 +13,7 @@ let searchCity = {
 let searchForm = $("#search-form");
 let searchInputEl = $("#search-input");
 let todayBox = $("#today_box");
+let titleFiveDay = $("#title-forecast");
 let searchHistoryBox = $("#search-history");
 let forecastBox = $("#forecast-box");
 let searchDisplayBox
@@ -77,30 +78,38 @@ function weatherData(weatherApiUrl) {
   }
 
 function handleWeatherData(data){
+  titleFiveDay.html("");
+  todayBox.html("");
+  forecastBox.html("");
   data["name"] = searchCity["name"];
   searchCity = data;
-  console.log(searchCity);
   var todayUl = document.createElement('ul');
-  todayBox.append(todayUl);
-  todayUl.innerHTML = "<li>City: " +  searchCity["name"] + " (" + dayjs().format("MM/DD/YYYY") + ")" + " <img src='http://openweathermap.org/img/wn/" + searchCity["current"]["weather"][0]["icon"] + ".png' /></li>" +
+  todayBox.append(todayUl).addClass("tbox");
+  todayUl.innerHTML = "<h2>" +  searchCity["name"] + " (" + dayjs().format("MM/DD/YYYY") + ")" + " <img src='https://openweathermap.org/img/wn/" + searchCity["current"]["weather"][0]["icon"] + ".png' /></h2>" +
   "<li> Temp: " + searchCity["current"]["temp"] + " F</li>" +
   "<li> Wind: " + searchCity["current"]["wind_speed"] + " MPH</li>" +
   "<li> Humidity: " + searchCity["current"]["humidity"] + " %</li>" +
   "<li> UV Index: " + searchCity["current"]["uvi"] + "</li>";
+  
+  var titleForecast = document.createElement('h3')
+  titleFiveDay.append(titleForecast);
+  titleForecast.innerHTML = "<h3>5-Day Forecast: " + "</h3>";
+
   var daily = data["daily"].slice(0, 5);
   var daySum = 1;
   for (day in daily){
     var forecastDiv = document.createElement('div')
-    forecastBox.append(forecastDiv);
-    forecastDiv.innerHTML = dayjs().add(daySum, 'day').format("MM/DD/YYYY") + " <img src='http://openweathermap.org/img/wn/" + daily[day]["weather"][0]["icon"] + ".png' /></li>" +
-    "<li> Temp: " + daily[day]["temp"]["day"] + " F</li>" +
-    "<li> Wind: " + daily[day]["wind_speed"] + " MPH</li>" +
-    "<li> Humidity: " + daily[day]["humidity"] + " %</li>" ;
+    forecastBox.append(forecastDiv).addClass("fbox");
+    forecastDiv.innerHTML = "<h4>" + dayjs().add(daySum, 'day').format("MM/DD/YYYY") + "</h4>" + " <img src='https://openweathermap.org/img/wn/" + daily[day]["weather"][0]["icon"] + ".png' /></div>" +
+    "<div> Temp: " + daily[day]["temp"]["day"] + " F</div>" +
+    "<div> Wind: " + daily[day]["wind_speed"] + " MPH</div>" +
+    "<div> Humidity: " + daily[day]["humidity"] + " %</div>" ;
     daySum++;
   }
 }
 
 function displayHistory(){
+  searchHistoryBox.html("");
   searchHistory = JSON.parse(localStorage.getItem("searchHistory"));
   var historyUl = document.createElement('ul');
   searchHistoryBox.append(historyUl);
@@ -129,6 +138,7 @@ function displayHistory(){
   };
 
   searchForm.on('submit', formSubmit);
+
 
 
 //search for a city and retrieve current and future conditions for that city, including: city name, the date, an icon representation of weather conditions, the temperature, the humidity, the wind speed, and the UV index. and that city is added to the search history. 
