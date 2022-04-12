@@ -89,8 +89,8 @@ function handleWeatherData(data){
   "<li> Temp: " + searchCity["current"]["temp"] + " F</li>" +
   "<li> Wind: " + searchCity["current"]["wind_speed"] + " MPH</li>" +
   "<li> Humidity: " + searchCity["current"]["humidity"] + " %</li>" +
-  "<li> UV Index: " + searchCity["current"]["uvi"] + "</li>";
-  
+  "<li id='uvi'> UV Index: " + searchCity["current"]["uvi"] + "</li>";
+  uvColor(searchCity["current"]["uvi"]);
   var titleForecast = document.createElement('h3')
   titleFiveDay.append(titleForecast);
   titleForecast.innerHTML = "<h3>5-Day Forecast: " + "</h3>";
@@ -108,13 +108,26 @@ function handleWeatherData(data){
   }
 }
 
+//change color to UV Index
+function uvColor(uvi){
+  var uviEl = $("#uvi")
+  if (uvi < 3){
+    uviEl.addClass("green")
+  } else if (uvi > 2 && uvi < 6){
+    uviEl.addClass("yellow")
+  } else {
+    uviEl.addClass("red")
+  }
+}
+
+
 function displayHistory(){
   searchHistoryBox.html("");
   searchHistory = JSON.parse(localStorage.getItem("searchHistory"));
   var historyUl = document.createElement('ul');
   searchHistoryBox.append(historyUl);
   for (city in searchHistory){
-    var cityLi = document.createElement('li')
+    var cityLi = document.createElement('li');
     cityLi.textContent = searchHistory[city];
     historyUl.appendChild(cityLi);
   }

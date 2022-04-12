@@ -1,5 +1,9 @@
+.history-li {
+    border: black solid 1em;
+}
 .history-box {
-    background-color: rgb(124, 129, 133);
+    background-color: rgb(153, 160, 165);
+    color: rgb(23, 24, 24);
     border: 1px solid;
 }
 li {
@@ -9,16 +13,25 @@ li {
 .red {
     background-color: #de5454;
     color: white;
+    max-width: 20%;
+    border-radius: 2%;
+    justify-content: center;
   }
   
   .yellow {
-    background-color: #eaf107;
+    background-color: #bcc117;
     color: white;
+    max-width: 20%;
+    border-radius: 2%;
+    justify-content: center;
   }
   
   .green {
     background-color: #77dd77;
     color: white;
+    max-width: 20%;
+    border-radius: 2%;
+    justify-content: center;
   }
   .fbox {
       background-color: rgb(47, 92, 152);
@@ -31,6 +44,7 @@ li {
   .tbox {
       border: black solid 2px;
       padding: 2em;
+      margin-top: 2%;
   }
   .saveBtn {
     border-left: 1px solid black;
